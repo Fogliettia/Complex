@@ -6,17 +6,25 @@
 using namespace std;
 
 int main() {
-    Complex c1(3,5);
-    c1.print();
-    Complex c2(1,6);
-    //Complex c3=c1-c2;
-           // cout << "ciao" <<  endl;
-    cout << "complex: " << c1.re() << "+"<< c1.im() <<"i"<< endl;
-    cout << "complex: " << c2.re() << "+"<< c2.im() <<"i"<< endl;
-    //c1+c2;
-    //cout << "complex: " << c3.re() << "+"<< c3.im() <<"i"<< endl;
-       // cout << "complex: " << c3.re() << "+i*"<< c3.im() << endl;
-        //c3.print();
+  Complex c1(3,5), c2(-3,-5), c3(1,0);
+  c1.print();
+  c2.print();
+  c3.print();
+  Complex c;
+  c.print();
+  c.setRe(3);
+  c.setIm(-4);
+  c.print();
+  Complex c4=3-c;
+  cout<<"c4"<<endl;
+  c4.print();
+  Complex c5(5,-1);
+  Complex diviso;
+  diviso=10/c5;
+  diviso.print();
+  
+
+
 
   return 0;
 }

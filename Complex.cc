@@ -18,9 +18,16 @@ void Complex::setIm(double im){im_=im;}
 
 //Member functions
 void Complex::print(){
-    cout<< "complex: " << re_ << " + i*" << im_ << endl;
+  if(im_>0){
+    cout<< "complex: " << re_ << "+" << im_<<"i"<< endl;
+  }
+  if(im_<0){
+    cout<< "complex: " << re_ << im_ <<"i"<< endl;
 }
-
+  if(im_==0){
+  cout<< "complex: " << re_ << endl;
+  }
+}
 double Complex::mag(){
     double mag;
     mag=sqrt(pow(re_,2.0)+pow(im_,2.0));
@@ -33,14 +40,17 @@ double Complex::phase(){
     return phase;
 }
 
-/*double r(){
-    
+double Complex::r(){
+    double mag;
+    mag=sqrt(pow(re_,2.0)+pow(im_,2.0));
+    return mag;
 }
 
-double phi(){
-    
+double Complex::phi(){
+    double phase;
+    phase=atan(im_/re_);
+    return phase;
 }
- */
 
 //Overloading operators
 Complex Complex::operator+( const Complex& rhs) const{
@@ -111,10 +121,38 @@ const Complex& Complex::operator-=(const Complex& rhs){
     im_ -= rhs.im_;
     return *this;
 }
+/*
+const Complex& operator*=(const Complex& rhs){
+    re_ *= rhs.re_;
+    im_ *= rhs.im_;
+    return *this;
+}
 
+const Complex& operator/=(const Complex& rhs){
+    re_ /= rhs.re_;
+    im_ /= rhs.im_;
+    return *this;
+}
+*/
+Complex operator*(const double& lhs, const Complex& rhs){
+return Complex(lhs*rhs.re_,lhs*rhs.im_);
+}
 
+Complex operator/(const double& lhs, const Complex& rhs){
+  double den=rhs.re_*rhs.re_-rhs.im_*rhs.im_;
+  return Complex(lhs*rhs.re_/den,-lhs*rhs.im_/den);
+}
 
+Complex operator+(const double& lhs, const Complex& rhs){
+  return Complex(lhs+rhs.re_,rhs.im_);
+}
 
+Complex operator-(const double& lhs, const Complex& rhs){
+  return Complex(lhs-rhs.re_,rhs.im_);
+}
 
-
-
+std::ostream& operator<<(std::ostream& os, const Complex& rhs){
+  using namespace std;
+  os<<rhs.re_<<" +i("<< rhs.im_<<")"<<endl;
+  return os;
+}
