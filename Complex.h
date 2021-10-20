@@ -7,7 +7,7 @@
 
 class Complex{
 public:
-    //Constructor
+    //Constructors
     Complex(){
         re_=0;
         im_=0;
@@ -16,7 +16,9 @@ public:
         re_=re;
         im_=im;
     }
-// ~Complex();
+    
+    //Destructor
+    ~Complex();
 
     //Getters
     double re(){return re_;}

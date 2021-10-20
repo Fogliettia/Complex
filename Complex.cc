@@ -11,6 +11,10 @@
 using std::cout;
 using std::endl;
 
+//Destructor
+Complex::~Complex(){
+cout<<"Complex::~Complex called"<<endl;
+}
 
 //Setters
 void Complex::setRe(double re){re_=re;}

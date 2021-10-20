@@ -23,8 +23,10 @@ int main() {
   diviso=10/c5;
   diviso.print();
   
-
-
+  c1.print();
+  Complex* del=new Complex(1,2);
+  del->print();
+  //delete del;
 
   return 0;
 }
